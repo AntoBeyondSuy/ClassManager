@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:task="http://www.springframework.org/schema/task"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/task
+	http://www.springframework.org/schema/task/spring-task-4.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<!-- 配置c3p0连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<!-- 注入属性值 -->
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/class"></property>
+		<property name="user" value="root"></property>
+		<property name="password" value="261213"></property>
+	</bean>
+	
+	<!-- sessionFactory创建交给spring管理 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<!-- 因为在hibernate核心配置文件中，没有数据库配置，数据库配置在spring里面配置，注入dataSource -->
+		<property name="dataSource" ref="dataSource"></property>
+		
+		<!-- 指定使用hibernate核心配置文件 -->
+		<!-- <property name="configLocations" value="classpath:hibernate.cfg.xml"></property> -->
+		
+		<!-- 配置hibernate基本信息 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+			</props>
+		</property>
+		
+		 <!--配置映射文件引入 -->
+		<property name="mappingResources">
+			<list>
+				<value>com/muc908/domain/User.hbm.xml</value>
+				<value>com/muc908/domain/Task.hbm.xml</value>
+				<value>com/muc908/domain/Agenda.hbm.xml</value>
+				<value>com/muc908/domain/News.hbm.xml</value>
+				<value>com/muc908/domain/Message.hbm.xml</value>
+				<value>com/muc908/domain/Notification.hbm.xml</value>
+				<value>com/muc908/domain/Weekly.hbm.xml</value>
+			</list>
+		</property>
+		
+	</bean>
+	
+	<!-- 第一步 配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<!--注入sessionFactory-->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 第二步 开启事务注解 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	
+	<!-- 配置action的对象 -->
+	<bean id="UserAction" class="com.muc908.web.action.UserAction" scope="prototype">
+		<!-- 注入service -->
+		<property name="userService" ref="userServiceImpl"></property>
+	</bean>
+
+
+	<!-- 创建实现类对象 -->
+	<bean id="task" class="com.muc908.web.task.task">
+		<!-- 注入service -->
+		<property name="userService" ref="userServiceImpl"></property>
+	</bean>
+
+	<!-- 创建service对象 -->
+	<bean id="userServiceImpl" class="com.muc908.service.impl.UserServiceImpl">
+		<!-- 注入dao 
+			接口 = 实现类对象
+		-->
+		<property name="userDao" ref="userDaoImpl"></property>
+	</bean>
+	
+	<!-- 创建实现类对象 -->
+	<bean id="userDaoImpl" class="com.muc908.dao.impl.UserDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<!-- 创建hibernateTemplate对象 -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<!-- 注入sessionFactory -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<context:annotation-config />
+	<!--  spring扫描注解的配置   -->
+	<context:component-scan base-package="com.muc908.web.action" />
+
+	<!--开启这个配置，spring才能识别@Scheduled注解   -->
+	<task:executor id="executor" pool-size="5" />
+	<task:scheduler id="scheduler" pool-size="10" />
+	<task:annotation-driven executor="executor" scheduler="scheduler" />
+</beans>
+
+
+
+
+
+
+
+
+
+

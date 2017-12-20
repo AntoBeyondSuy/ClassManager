@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.muc908.domain.Message" table="message">
+		<id name="mid" column="mid">
+			<generator class="native"></generator>
+		</id>
+
+		<property name="content" column="content"></property>
+		<property name="sender_id" column="sender_id"></property>
+		<property name="sender_name" column="sender_name"></property>
+		<property name="receiver_id" column="receiver_id"></property>
+		<property name="receiver_name" column="receiver_name"></property>
+		<property name="year" column="year"></property>
+		<property name="month" column="month"></property>
+		<property name="day" column="day"></property>
+		
+		</class>
+</hibernate-mapping>
+
+
+
+
+

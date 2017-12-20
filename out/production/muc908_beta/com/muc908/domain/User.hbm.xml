@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.muc908.domain.User" table="user">
+		<id name="id" column="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="username" column="username"></property>
+		<property name="password" column="password"></property>
+		<property name="name" column="name"></property>
+		<property name="student_id" column="student_id"></property>
+		<property name="grade" column="grade"></property>
+		<property name="student_group" column="student_group"></property>
+		<property name="email" column="email"></property>
+		<property name="phone_number" column="phone_number"></property>
+		<property name="last_login" column="last_login"></property>
+
+		<set name="setTask" cascade="save-update,delete" lazy="false">
+			<key column="uid"></key>
+			<one-to-many class="com.muc908.domain.Task"></one-to-many>
+		</set>
+	</class>
+</hibernate-mapping>
+
+
+
+
+

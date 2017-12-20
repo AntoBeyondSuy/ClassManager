@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.muc908.domain.Task" table="task">
+		<id name="tid" column="tid">
+			<generator class="native"></generator>
+		</id>
+		<property name="content" column="content"></property>
+		<property name="badge" column="badge"></property>
+		
+		<many-to-one name="user" class="com.muc908.domain.User" column="uid"></many-to-one>
+	</class>
+</hibernate-mapping>
+
+
+
+
+

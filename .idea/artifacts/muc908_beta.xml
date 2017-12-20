@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="muc908_beta">
+    <output-path>$PROJECT_DIR$/out/artifacts/muc908_beta</output-path>
+    <root id="archive" name="muc908_beta.war">
+      <element id="artifact" artifact-name="ilab" />
+    </root>
+  </artifact>
+</component>
