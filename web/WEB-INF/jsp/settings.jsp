@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Kevin
-  Date: 2017/2/3
-  Time: 20:46
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html>
@@ -132,17 +125,18 @@
   <!-- **********************************************************************************************************************************************************
   MAIN CONTENT
   *********************************************************************************************************************************************************** -->
-  <!--main content start-->
+
   <!--main content start-->
   <section id="main-content">
-    <section class="wrapper">
-      <h3><i class="fa fa-angle-right"></i> 设置</h3>
+    <section class="wrapper"><%--包括 设置、头像、其他信息--%>
+      <h3><i class="fa fa-angle-right"></i> 设置</h3><%--设置 两个大字--%>
 
-      <!-- INLINE FORM ELELEMNTS -->
-      <div class="row mt">
+      <!-- INLINE FORM ELELEMNTS 头像 栏-->
+      <div class="row mt" style="float: left; width: 450px; display: inline-block; margin-top: 0;">
         <div class="col-lg-12">
           <div class="form-panel">
 
+            <%--模态框区域--%>
             <div class="container" id="crop-avatar">
               <!-- Cropping modal -->
               <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
@@ -190,23 +184,31 @@
 
             </div>
 
+            <%--在页面上显示的区域--%>
             <h4 class="mb"><i class="fa fa-angle-right"></i> 头像</h4>
-            <form class="form-horizontal style-form" method="get">
+            <form class="form-horizontal style-form" method="get" style="height: 100%;">
               <div class="form-group">
-                <label class="col-sm-2 col-sm-2 control-label">当前头像</label>
-                <div class="col-sm-10 text-center">
-                  <img src="assets/img/avatar/<s:property value="#session.user.id" />.jpg" class="img-circle" width="60">
-                  <div class="pull-right"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#avatar-modal">更改</button></div>
+
+                <label class="col-sm-2 control-label" style="width: 100%;">当前头像</label>
+
+                <div class="col-sm-10 text-center" style="width: 100%;">
+                  <img src="assets/img/avatar/<s:property value="#session.user.id" />.jpg" class="img-circle" width="270">
+                  <br /><br />
+                  <div>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#avatar-modal">修改当前头像</button>
+                  </div>
                 </div>
+
               </div>
             </form>
+
           </div><!-- /form-panel -->
         </div><!-- /col-lg-12 -->
       </div><!-- /row -->
 
 
-      <!-- BASIC FORM ELELEMNTS -->
-      <div class="row mt">
+      <!-- BASIC FORM ELELEMNTS 其他设置 栏-->
+      <div class="row mt" style="width: 800px; display: inline-block; margin-top: 0;">
         <div class="col-lg-12">
           <div class="form-panel">
             <div class="pull-right">
@@ -258,9 +260,13 @@
                 <div class="col-sm-10">
                   <select name="settingsUser.student_group" class="form-control">
                     <option>组别</option>
-                    <option <s:if test='#request.user1.student_group=="大数据"'> selected="selected"</s:if>>大数据</option>
-                    <option <s:if test='#request.user1.student_group=="深度学习"'> selected="selected"</s:if>>深度学习</option>
-                    <option <s:if test='#request.user1.student_group=="其他"'> selected="selected"</s:if>>其他</option>
+                    <option <s:if test='#request.user1.student_group=="软件工程"'> selected="selected"</s:if>>软件工程</option>
+                    <option <s:if test='#request.user1.student_group=="计算机科学与技术"'> selected="selected"</s:if>>深度学习</option>
+                    <option <s:if test='#request.user1.student_group=="通信工程"'> selected="selected"</s:if>>其他</option>
+                    <option <s:if test='#request.user1.student_group=="电子信息工程"'> selected="selected"</s:if>>大数据</option>
+                    <option <s:if test='#request.user1.student_group=="物联网工程"'> selected="selected"</s:if>>深度学习</option>
+                    <option <s:if test='#request.user1.student_group=="工科实验班"'> selected="selected"</s:if>>其他</option>
+                    <option <s:if test='#request.user1.student_group=="自动化"'> selected="selected"</s:if>>大数据</option>
                   </select>
                 </div>
               </div>
@@ -283,6 +289,7 @@
 
 
     </section><! --/wrapper -->
+
   </section><!-- /MAIN CONTENT -->
 
 </section>
@@ -318,8 +325,8 @@
               var unique_id = $.gritter.add({
                   // (string | mandatory) the heading of the notification
                   title: data,
-                  // (string | mandatory) the text inside the notification
                   text: data,
+                  // (string | mandatory) the text inside the notification
                   // (string | optional) the image to display on the left
                   image: '${pageContext.request.contextPath }/assets/img/ilab.jpg',
                   // (bool | optional) if you want it to fade out on its own or just sit there

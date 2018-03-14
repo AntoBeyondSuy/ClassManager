@@ -42,11 +42,13 @@
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/class</prop>
+				<prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
 			</props>
 		</property>
 		
 		 <!--配置映射文件引入 -->
-		<property name="mappingResources">
+<!--		<property name="mappingResources">
 			<list>
 				<value>com/muc/domain/User.hbm.xml</value>
 				<value>com/muc/domain/Task.hbm.xml</value>
@@ -56,8 +58,8 @@
 				<value>com/muc/domain/Notification.hbm.xml</value>
 				<value>com/muc/domain/Weekly.hbm.xml</value>
 			</list>
-		</property>
-		
+		</property>-->
+		<property name="packagesToScan" value="com.muc.domain" />
 	</bean>
 	
 	<!-- 第一步 配置事务管理器 -->

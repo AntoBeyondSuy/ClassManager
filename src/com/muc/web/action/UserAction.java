@@ -93,18 +93,21 @@ public class UserAction extends ActionSupport{
     private File avatar_file;
     private String avatar_fileFileName;
     private String avatar_data;
+
     public File getAvatar_file() {
         return avatar_file;
     }
     public void setAvatar_file(File avatar_file) {
         this.avatar_file = avatar_file;
     }
+
     public String getAvatar_fileFileName() {
         return avatar_fileFileName;
     }
     public void setAvatar_fileFileName(String avatar_fileFileName) {
         this.avatar_fileFileName = avatar_fileFileName;
     }
+
     public String getAvatar_data() {
         return avatar_data;
     }
@@ -129,6 +132,7 @@ public class UserAction extends ActionSupport{
     public String LoginUI() throws Exception {
         return "LoginUI";
     }
+
     public String Login() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -145,6 +149,7 @@ public class UserAction extends ActionSupport{
         response.getWriter().write("用户名或密码错误");
         return NONE;
     }
+
     public String Logout() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -158,6 +163,7 @@ public class UserAction extends ActionSupport{
         }
         return "LoginUI";
     }
+
     public String Register() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -211,13 +217,25 @@ public class UserAction extends ActionSupport{
         }
         user.setStudent_id(registerUser.getStudent_id());
 
-        if((registerUser.getGrade().equals("年级"))||(!(registerUser.getGrade().equals("大一")||registerUser.getGrade().equals("大二")||registerUser.getGrade().equals("大三")||registerUser.getGrade().equals("大四")||registerUser.getGrade().equals("研一")||registerUser.getGrade().equals("研二")||registerUser.getGrade().equals("研三")))){
+        if((registerUser.getGrade().equals("年级"))||(!
+                (registerUser.getGrade().equals("大一")
+                ||registerUser.getGrade().equals("大二")
+                ||registerUser.getGrade().equals("大三")
+                ||registerUser.getGrade().equals("大四")
+                ||registerUser.getGrade().equals("研一")
+                ||registerUser.getGrade().equals("研二")
+                ||registerUser.getGrade().equals("研三")
+        ))){
             response.getWriter().write("请选择年级");
             return NONE;
         }
         user.setGrade(registerUser.getGrade());
 
-        if((registerUser.getStudent_group().equals("组别"))||(!(registerUser.getStudent_group().equals("大数据")||registerUser.getStudent_group().equals("深度学习")||registerUser.getStudent_group().equals("其他")))){
+        if((registerUser.getStudent_group().equals("组别"))||(!(
+                registerUser.getStudent_group().equals("大数据")
+                ||registerUser.getStudent_group().equals("深度学习")
+                ||registerUser.getStudent_group().equals("其他")
+        ))){
             response.getWriter().write("请选择组别");
             return NONE;
         }
@@ -270,7 +288,7 @@ public class UserAction extends ActionSupport{
             userService.addTask(user,task2);
 
             String dir = ServletActionContext.getServletContext().getRealPath("/assets/img/avatar/");
-            FileInputStream is = new FileInputStream(new File(dir + "ui-sam.jpg"));
+            FileInputStream is = new FileInputStream(new File(dir + "ui-sam.jpg"));/*这是默认的头像图标*/
             FileOutputStream os = new FileOutputStream(new File(dir+ user.getId() + ".jpg"));
 
             byte[] buf = new byte[1024];
@@ -308,6 +326,7 @@ public class UserAction extends ActionSupport{
         }
         return "IndexUI";
     }
+
     public String AddTask() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -341,6 +360,7 @@ public class UserAction extends ActionSupport{
             return NONE;
         }
     }
+
     public String EditTask() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -375,6 +395,7 @@ public class UserAction extends ActionSupport{
             return NONE;
         }
     }
+
     public String DeleteTask() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -408,6 +429,7 @@ public class UserAction extends ActionSupport{
 
         return "CalendarUI";
     }
+
     public String Calendar() throws Exception {
 
         HttpServletResponse response = ServletActionContext.getResponse();
@@ -428,6 +450,7 @@ public class UserAction extends ActionSupport{
         response.getOutputStream().write(res.toString().getBytes("utf-8"));
         return NONE;
     }
+
     public String AddAgenda() throws Exception {
 
         HttpServletResponse response = ServletActionContext.getResponse();
@@ -472,6 +495,7 @@ public class UserAction extends ActionSupport{
             return NONE;
         }
     }
+
     public String EditAgenda() throws Exception {
 
         HttpServletResponse response = ServletActionContext.getResponse();
@@ -517,6 +541,7 @@ public class UserAction extends ActionSupport{
             return NONE;
         }
     }
+
     public String DeleteAgenda() throws Exception {
 
         HttpServletResponse response = ServletActionContext.getResponse();
@@ -549,6 +574,7 @@ public class UserAction extends ActionSupport{
 
         return "UserUI";
     }
+
     public String GetGraduate() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -558,6 +584,7 @@ public class UserAction extends ActionSupport{
 
         return "UserUI";
     }
+
     public String GetAdmin() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -600,6 +627,7 @@ public class UserAction extends ActionSupport{
 
         return "MessageUI";
     }
+
     public String SentMessageUI() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -628,6 +656,7 @@ public class UserAction extends ActionSupport{
 
         return "MessageUI";
     }
+
     public String AddMessage() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -699,6 +728,7 @@ public class UserAction extends ActionSupport{
 //            map.put(key, value);
 //        }
     }
+
     public String DeleteMessage() throws Exception {
 
         HttpServletResponse response = ServletActionContext.getResponse();
@@ -732,6 +762,7 @@ public class UserAction extends ActionSupport{
 
         return "SettingsUI";
     }
+
     public String Settings() throws Exception {
 
 
@@ -826,6 +857,7 @@ public class UserAction extends ActionSupport{
             return NONE;
         }
     }
+
     public String Avatar() throws Exception {
 
         HttpServletResponse response = ServletActionContext.getResponse();
@@ -909,6 +941,7 @@ public class UserAction extends ActionSupport{
 
         return "NewsUI";
     }
+
     public String AddNews() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -958,6 +991,7 @@ public class UserAction extends ActionSupport{
             return NONE;
         }
     }
+
     public String DeleteNews() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -993,6 +1027,7 @@ public class UserAction extends ActionSupport{
 
         return "WeeklyUI";
     }
+
     public String AddWeekly() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -1022,6 +1057,7 @@ public class UserAction extends ActionSupport{
             return NONE;
         }
     }
+
     public String UpdateWeekly() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -1052,6 +1088,7 @@ public class UserAction extends ActionSupport{
             return NONE;
         }
     }
+
     public String DeleteWeekly() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();

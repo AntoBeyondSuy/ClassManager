@@ -25,9 +25,9 @@ ate use File | Settings | File Templates.
 
 <body>
 
-<!-- **********************************************************************************************************************************************************
+<!-- ****************************************************************************************
 MAIN CONTENT
-*********************************************************************************************************************************************************** -->
+********************************************************************************************* -->
 <div class="background_black"></div>
 <div id="login-page">
     <div class="container">
@@ -62,20 +62,22 @@ MAIN CONTENT
                 <br>
                 <select name="registerUser.grade" class="form-control">
                     <option>年级</option>
-                    <option>大一</option>
-                    <option>大二</option>
-                    <option>大三</option>
-                    <option>大四</option>
-                    <option>研一</option>
-                    <option>研二</option>
-                    <option>研三</option>
+                    <option>本科一年级</option>
+                    <option>本科二年级</option>
+                    <option>本科三年级</option>
+                    <option>本科四年级</option>
+                    <option>研究生一年级</option>
+                    <option>研究生二年级</option>
+                    <option>研究生三年级</option>
                 </select>
                 <br>
                 <select name="registerUser.student_group" class="form-control">
-                    <option>组别</option>
-                    <option>大数据</option>
-                    <option>深度学习</option>
-                    <option>其他</option>
+                    <option>班级</option>
+                    <option>软件工程</option>
+                    <option>电子信息工程</option>
+                    <option>自动化</option>
+                    <option>计算机</option>
+
                 </select>
                 <br>
                 <input name="registerUser.email" type="email" class="form-control" placeholder="邮箱">
@@ -198,7 +200,6 @@ MAIN CONTENT
         );
     });
 </script>
-
 
 </body>
 </html>

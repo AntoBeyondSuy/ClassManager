@@ -1,7 +1,5 @@
 package com.muc.web.task;
 
-import com.muc.domain.Message;
-import com.muc.domain.User;
 import com.muc.service.UserService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

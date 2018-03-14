@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="class@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="class">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="food"/>
+    <schema id="4" parent="1" name="hibernatetest"/>
+    <schema id="5" parent="1" name="ilab_entry"/>
+    <schema id="6" parent="1" name="information_schema"/>
+    <schema id="7" parent="1" name="lang_assurance"/>
+    <schema id="8" parent="1" name="mysql"/>
+    <schema id="9" parent="1" name="oauth"/>
+    <schema id="10" parent="1" name="performance_schema"/>
+    <schema id="11" parent="1" name="ssh2_db"/>
+    <schema id="12" parent="1" name="sys"/>
+    <table id="13" parent="2" name="agenda"/>
+    <table id="14" parent="2" name="content"/>
+    <table id="15" parent="2" name="item"/>
+    <table id="16" parent="2" name="leaveword"/>
+    <table id="17" parent="2" name="message"/>
+    <table id="18" parent="2" name="news"/>
+    <table id="19" parent="2" name="notification"/>
+    <table id="20" parent="2" name="task"/>
+    <table id="21" parent="2" name="user"/>
+    <table id="22" parent="2" name="weekly"/>
+    <column id="23" parent="13" name="aid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="13" name="title">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="25" parent="13" name="start">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="26" parent="13" name="end">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="27" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>aid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="28" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="29" parent="14" name="content">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="30" parent="14" name="i_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="31" parent="14" name="FKcsjt90xnyijxxjvlqc3tdejbx">
+      <ColNames>i_id</ColNames>
+    </index>
+    <key id="32" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="33" parent="14" name="FKcsjt90xnyijxxjvlqc3tdejbx">
+      <ColNames>i_id</ColNames>
+      <RefSchemaName>class</RefSchemaName>
+      <RefTableName>item</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="34" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="35" parent="15" name="subject">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="36" parent="15" name="start">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="37" parent="15" name="end">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="38" parent="15" name="weekday">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="39" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="40" parent="16" name="leaveWordsId">
+      <Position>1</Position>
+      <DataType>int(55)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="41" parent="16" name="leaveWords">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="16" name="authorId">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="43" parent="16" name="FK6314E24188D50FCB">
+      <ColNames>authorId</ColNames>
+    </index>
+    <key id="44" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>leaveWordsId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="45" parent="16" name="FK6314E24188D50FCB">
+      <ColNames>authorId</ColNames>
+      <RefSchemaName>class</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="46" parent="16" name="leaveword_ibfk_1">
+      <ColNames>authorId</ColNames>
+      <RefSchemaName>class</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="47" parent="17" name="mid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="48" parent="17" name="content">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="49" parent="17" name="sender_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="50" parent="17" name="sender_name">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="51" parent="17" name="receiver_id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="52" parent="17" name="receiver_name">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="53" parent="17" name="year">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="54" parent="17" name="month">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="55" parent="17" name="day">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="56" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>mid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="57" parent="18" name="nid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="58" parent="18" name="title">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="59" parent="18" name="author_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="60" parent="18" name="author_name">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="61" parent="18" name="content">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="62" parent="18" name="year">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="63" parent="18" name="month">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="64" parent="18" name="day">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="65" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>nid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="66" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="67" parent="19" name="first_link">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="68" parent="19" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="69" parent="19" name="first_words">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="70" parent="19" name="second_link">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="71" parent="19" name="second_words">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="72" parent="19" name="time">
+      <Position>7</Position>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="73" parent="19" name="receiver_id">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="74" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="75" parent="20" name="tid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="76" parent="20" name="content">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="77" parent="20" name="badge">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="78" parent="20" name="uid">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="79" parent="20" name="FK363585336BDC35">
+      <ColNames>uid</ColNames>
+    </index>
+    <index id="80" parent="20" name="FKlsnirkkph60asa5smbrpp9e1i">
+      <ColNames>uid</ColNames>
+    </index>
+    <key id="81" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>tid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="82" parent="20" name="FK363585336BDC35">
+      <ColNames>uid</ColNames>
+      <RefSchemaName>class</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="83" parent="20" name="FKlsnirkkph60asa5smbrpp9e1i">
+      <ColNames>uid</ColNames>
+      <RefSchemaName>class</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="84" parent="20" name="task_ibfk_1">
+      <ColNames>uid</ColNames>
+      <RefSchemaName>class</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="85" parent="21" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="86" parent="21" name="username">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="87" parent="21" name="password">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="88" parent="21" name="name">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="89" parent="21" name="student_id">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="90" parent="21" name="grade">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="91" parent="21" name="student_group">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="92" parent="21" name="email">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="93" parent="21" name="phone_number">
+      <Position>9</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="94" parent="21" name="last_login">
+      <Position>10</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="95" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="96" parent="22" name="wid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="97" parent="22" name="author_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="98" parent="22" name="author_name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="99" parent="22" name="content">
+      <Position>4</Position>
+      <DataType>longtext|0</DataType>
+    </column>
+    <column id="100" parent="22" name="year">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="101" parent="22" name="month">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="102" parent="22" name="day">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="103" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>wid</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
